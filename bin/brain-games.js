@@ -1,7 +1,14 @@
 #!/usr/bin/env node
-console.log('Welcome to the Brain Games!');
+
 import { getUserName } from '../src/cli.js';
 
-let greet = getUserName();
+function greetUser() {
 
-console.log(`Hello, ${greet}!`); 
+    console.log('Welcome to the Brain Games!');
+
+    let name = getUserName();
+
+    console.log(`Hello, ${name}!`);
+    return name;
+}
+export { greetUser };
