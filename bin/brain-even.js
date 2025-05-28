@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import readlineSync from 'readline-sync';
-
 import {greetUser} from '../bin/brain-games.js';
+
 const name = greetUser();
 
 function isNumberEven(number) {
