@@ -22,7 +22,6 @@ for (let i = 0; i < 3 ; i += 1) {
         if ((userAnswer === 'yes' && isNumberEven(randomNumber)) || 
             (userAnswer === 'no' && !isNumberEven(randomNumber))) {
             console.log('Correct!');
-            
         } else {
             console.log(`Wrong answer! The correct answer was '${isNumberEven(randomNumber) ? 'yes' : 'no'}'.`);
             console.log(`Let's try again, ${name}!`);
