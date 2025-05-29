@@ -3,3 +3,4 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=bugrich_backend-project-44&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=bugrich_backend-project-44)
 https://asciinema.org/a/5NwNnWK4Tam3PJfQBAoIvqLWJ
 https://asciinema.org/a/Gkw1FpdKaKsNlUOKnQbsBUImI
+https://asciinema.org/a/Qgs6lS4Xef0ZkRo2Hw8YGFAYX
