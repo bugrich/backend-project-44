@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-import { getUserName } from "../src/cli.js";
+import { getUserName } from '../src/cli.js'
 
-export const greetUser = getUserName();
+export const greetUser = getUserName()

@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-import { greetUser } from "../bin/brain-games.js";
+import { greetUser } from '../bin/brain-games.js'
 import {
   taskForBrainCalcGame,
   brainCalcGame,
-} from "../games/brain-calc-module.js";
+} from '../games/brain-calc-module.js'
 
-const name = greetUser;
+const name = greetUser
 
-taskForBrainCalcGame();
+taskForBrainCalcGame()
 
-brainCalcGame(name);
+brainCalcGame(name)
