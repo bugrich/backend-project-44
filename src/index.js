@@ -25,7 +25,7 @@ function wrongAnswer(name, questionValue, userAnswer) {
     console.log(
       `'${userAnswer}' is wrong answer ;(. Correct answer was '${questionValue}'`
     );
-    console.log(`Let's try again, ${name}`);
+    console.log(`Let's try again, ${name}!`);
   } else {
     console.log(
       `Wrong answer! The correct answer was '${questionValue ? "yes" : "no"}'.`
