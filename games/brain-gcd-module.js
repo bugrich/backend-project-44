@@ -1,10 +1,10 @@
 import {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 } from '../src/index.js'
 
 function getGcd(a, b) {
@@ -16,31 +16,30 @@ function getGcd(a, b) {
   return a
 }
 
-function taskForBrainGcdGame() {
+function logTaskForBrainGcdGame() {
   console.log('Find the greatest common divisor of given numbers.')
 }
 
-function brainGcdGame(name) {
+function runBrainGcdGame(name) {
+  const decimality = 100
   for (let i = 0; i < 3; i += 1) {
-    const decimality = 100
-
     const numbers = [getRandomNumber(decimality), getRandomNumber(decimality)]
 
-    question(numbers.join(' '))
+    logQuestion(numbers.join(' '))
 
-    const userInput = userAnswer()
+    const userAnswer = getUserAnswer()
 
-    const result = getGcd(numbers[0], numbers[1])
+    const gcd = getGcd(...numbers)
 
-    if (Number(userInput) === result) {
-      rightAsnwer()
+    if (Number(userAnswer) === gcd) {
+      logUserAnswerIsRight()
     }
     else {
-      wrongAnswer(name, result, userInput)
+      logUserAnswerIsWrong(name, gcd, userAnswer)
       break
     }
-    conditionForAWin(name, i)
+    checkIfUserWon(name, i)
   }
 }
 
-export { getGcd, brainGcdGame, taskForBrainGcdGame }
+export { runBrainGcdGame, logTaskForBrainGcdGame }

@@ -1,65 +1,62 @@
 import {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 } from '../src/index.js'
 
-function getArray() {
-  const array = []
+function getProgression() {
+  const progression = []
 
   const decimalityForStart = 100
   const decimalityForStep = 10
 
   const start = getRandomNumber(decimalityForStart)
-  const step = getRandomNumber(decimalityForStep)
+  let step = getRandomNumber(decimalityForStep)
 
-  for (let i = 0; i < 10; i += 1) {
-    if (step !== 0) {
-      const currentElement = start + i * step
-      array.push(currentElement)
-    }
-    else {
-      const currentElement = start + i * 2
-      array.push(currentElement)
-    }
+  while (step === 0) {
+    step = getRandomNumber(decimalityForStep)
   }
 
-  return array
+  for (let i = 0; i < 10; i += 1) {
+    const currentElement = start + i * step
+    progression.push(currentElement)
+  }
+
+  return progression
 }
 
-function taskForBrainProgressionGame() {
+function logTaskForBrainProgressionGame() {
   console.log('What number is missing in the progression?')
 }
 
-function brainProgressionGame(name) {
+function runBrainProgressionGame(name) {
+  const decimality = 10
   for (let i = 0; i < 3; i += 1) {
-    const decimality = 10
-
     const randomNumberOfProgression = getRandomNumber(decimality)
 
-    const progression = getArray()
+    const progression = getProgression()
 
-    const result = progression[randomNumberOfProgression]
+    const correctAnswer = progression[randomNumberOfProgression]
 
     progression[randomNumberOfProgression] = '..'
 
-    question(progression.join(' '))
+    logQuestion(progression.join(' '))
 
-    const userInput = userAnswer()
+    const userAnswer = getUserAnswer()
 
-    if (Number(userInput) === result) {
-      rightAsnwer()
+    if (Number(userAnswer) === correctAnswer) {
+      logUserAnswerIsRight()
     }
     else {
-      wrongAnswer(name, result, userInput)
+      logUserAnswerIsWrong(name, correctAnswer, userAnswer)
       break
     }
 
-    conditionForAWin(name, i)
+    checkIfUserWon(name, i)
   }
 }
 
-export { taskForBrainProgressionGame, brainProgressionGame, getArray }
+export { logTaskForBrainProgressionGame, runBrainProgressionGame }

@@ -1,13 +1,12 @@
 import readlineSync from 'readline-sync'
 import crypto from 'crypto'
 
-function question(numbers) {
+function logQuestion(numbers) {
   console.log(`Question: ${numbers}`)
 }
 
-function userAnswer() {
-  const userAnswer = readlineSync.question('Your answer: ')
-  return userAnswer
+function getUserAnswer() {
+  return readlineSync.question('Your answer: ')
 }
 
 function getRandomNumber(decimality) {
@@ -16,36 +15,36 @@ function getRandomNumber(decimality) {
   return randomValue % decimality
 }
 
-function rightAsnwer() {
+function logUserAnswerIsRight() {
   console.log('Correct!')
 }
 
-function wrongAnswer(name, questionValue, userAnswer) {
+function logUserAnswerIsWrong(name, correctAnswer, userAnswer) {
   if (typeof userAnswer === 'string' && userAnswer.length > 0) {
     console.log(
-      `'${userAnswer}' is wrong answer ;(. Correct answer was '${questionValue}'`,
+      `'${userAnswer}' is wrong answer ;(. Correct answer was '${correctAnswer}'`,
     )
     console.log(`Let's try again, ${name}!`)
   }
   else {
     console.log(
-      `Wrong answer! The correct answer was '${questionValue ? 'yes' : 'no'}'.`,
+      `Wrong answer! The correct answer was '${correctAnswer ? 'yes' : 'no'}'.`,
     )
     console.log(`Let's try again, ${name}!`)
   }
 }
 
-function conditionForAWin(name, index) {
+function checkIfUserWon(name, index) {
   if (index === 2) {
     console.log(`Congratulations, ${name}!`)
   }
 }
 
 export {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 }

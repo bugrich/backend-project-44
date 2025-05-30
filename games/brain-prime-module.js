@@ -1,10 +1,10 @@
 import {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 } from '../src/index.js'
 
 function isPrime(number) {
@@ -26,31 +26,28 @@ function isPrime(number) {
   return true
 }
 
-function taskForBrainPrimeGame() {
+export function logTaskForBrainPrimeGame() {
   console.log('Answer "yes" if given number is prime. Otherwise answer "no".')
 }
 
-function brainPrimeGame(name) {
+export function runBrainPrimeGame(name) {
+  const decimality = 100
   for (let i = 0; i < 3; i += 1) {
-    const decimality = 100
-
     const number = getRandomNumber(decimality)
 
-    question(number)
+    logQuestion(number)
 
-    const userInput = userAnswer()
+    const userAnswer = getUserAnswer()
 
-    const result = isPrime(number)
+    const correctAnswer = isPrime(number)
 
-    if ((userInput === 'yes' && result) || (userInput === 'no' && !result)) {
-      rightAsnwer()
+    if (userAnswer === (correctAnswer ? 'yes' : 'no')) {
+      logUserAnswerIsRight()
     }
     else {
-      wrongAnswer(name, result)
+      logUserAnswerIsWrong(name, correctAnswer)
       break
     }
-    conditionForAWin(name, i)
+    checkIfUserWon(name, i)
   }
 }
-
-export { brainPrimeGame, taskForBrainPrimeGame, isPrime }

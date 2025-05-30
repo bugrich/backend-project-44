@@ -1,13 +1,13 @@
 import {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 } from '../src/index.js'
 
-function getOperation() {
+function getOperations() {
   let opOrder = []
 
   for (let i = 0; i < 3; i += 1) {
@@ -26,60 +26,51 @@ function getOperation() {
   return opOrder
 }
 
-function calcResult(coll) {
-  let result
-
-  const firstNumber = coll[0]
-  const secondNumber = coll[2]
-  const operator = coll[1]
+function calc(expression) {
+  const [firstNumber, operator, secondNumber] = expression
 
   switch (operator) {
     case '+':
-      result = firstNumber + secondNumber
-      break
+      return firstNumber + secondNumber
     case '-':
-      result = firstNumber - secondNumber
-      break
+      return firstNumber - secondNumber
     case '*':
-      result = firstNumber * secondNumber
-      break
+      return firstNumber * secondNumber
     default:
-      result = null
+      return null
   }
-  return result
 }
 
-function taskForBrainCalcGame() {
+function logTaskForBrainCalcGame() {
   console.log('What is the result of the expression?')
 }
 
-function brainCalcGame(name) {
+function runBrainCalcGame(name) {
+  const decimality = 100
   for (let i = 0; i < 3; i += 1) {
-    const decimality = 100
-
-    const arrayOfOp = getOperation()
+    const operations = getOperations()
 
     const firstNumber = getRandomNumber(decimality)
 
     const secondNumber = getRandomNumber(decimality)
 
-    const numbers = [firstNumber, arrayOfOp[i], secondNumber]
+    const expression = [firstNumber, operations[i], secondNumber]
 
-    question(numbers.join(' '))
+    logQuestion(expression.join(' '))
 
-    const userInput = userAnswer()
+    const userAnswer = getUserAnswer()
 
-    const result = calcResult(numbers)
+    const result = calc(expression)
 
-    if (result === Number(userInput)) {
-      rightAsnwer()
+    if (result === Number(userAnswer)) {
+      logUserAnswerIsRight()
     }
     else {
-      wrongAnswer(name, result, userInput)
+      logUserAnswerIsWrong(name, result, userAnswer)
       break
     }
-    conditionForAWin(name, i)
+    checkIfUserWon(name, i)
   }
 }
 
-export { getOperation, brainCalcGame, taskForBrainCalcGame }
+export { runBrainCalcGame, logTaskForBrainCalcGame }

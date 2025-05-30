@@ -1,41 +1,40 @@
 import {
-  question,
-  userAnswer,
+  logQuestion,
+  getUserAnswer,
   getRandomNumber,
-  rightAsnwer,
-  wrongAnswer,
-  conditionForAWin,
+  logUserAnswerIsRight,
+  logUserAnswerIsWrong,
+  checkIfUserWon,
 } from '../src/index.js'
 
 function isNumberEven(number) {
   return number % 2 === 0
 }
 
-function taskForBrainEvenGame() {
+function logTaskForBrainEvenGame() {
   console.log('Answer "yes" if the number is even, otherwise answer "no".')
 }
 
-function brainEvenGame(name) {
+function runBrainEvenGame(name) {
+  const decimality = 100
   for (let i = 0; i < 3; i += 1) {
-    const decimality = 100
-
     const number = getRandomNumber(decimality)
 
-    question(number)
+    logQuestion(number)
 
-    const userInput = userAnswer()
+    const userAnswer = getUserAnswer()
 
-    const result = isNumberEven(number)
+    const isEven = isNumberEven(number)
 
-    if ((userInput === 'yes' && result) || (userInput === 'no' && !result)) {
-      rightAsnwer()
+    if (userAnswer === (isEven ? 'yes' : 'no')) {
+      logUserAnswerIsRight()
     }
     else {
-      wrongAnswer(name, result)
+      logUserAnswerIsWrong(name, isEven)
       break
     }
-    conditionForAWin(name, i)
+    checkIfUserWon(name, i)
   }
 }
 
-export { isNumberEven, brainEvenGame, taskForBrainEvenGame }
+export { runBrainEvenGame, logTaskForBrainEvenGame }

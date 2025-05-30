@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 import { greetUser } from '../bin/brain-games.js'
 import {
-  taskForBrainPrimeGame,
-  brainPrimeGame,
+  logTaskForBrainPrimeGame,
+  runBrainPrimeGame,
 } from '../games/brain-prime-module.js'
 
 const name = greetUser
 
-taskForBrainPrimeGame()
+logTaskForBrainPrimeGame()
 
-brainPrimeGame(name)
+runBrainPrimeGame(name)
